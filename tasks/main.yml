@@ -1,35 +1,26 @@
 - apt: pkg={{item}} state=latest update_cache=yes cache_valid_time=3600
   with_items: [unzip]
-  tags: [debug]
 
 - stat: path={{phantomjs_bin_path}}
   register: phantomjs_bin_stats
-  tags: [debug]
 
 - file: path={{phantomjs_download_dir}}
         state=directory
   when: not phantomjs_bin_stats.stat.exists
-  tags: [debug]
 
 - get_url: url={{phantomjs_url}}
            dest={{phantomjs_download_path}}
   when: not phantomjs_bin_stats.stat.exists
-  tags: [debug]
 
 - shell: 'cd {{phantomjs_download_dir}} && tar xvf {{phantomjs_download_path}}'
   when: not phantomjs_bin_stats.stat.exists
-  tags: [debug]
 
 - command: cp {{phantomjs_download_bin_path}} {{phantomjs_bin_path}}
   when: not phantomjs_bin_stats.stat.exists
-  tags: [debug]
 
 - file: path={{phantomjs_bin_path}}
         mode=0755
-  tags: [debug]
 
 - file: dest=/usr/local/bin/phantomjs
         src={{phantomjs_bin_path}}
         state=link
-  tags: [debug]
-
