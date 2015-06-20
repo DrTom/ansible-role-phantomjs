@@ -1,15 +1,15 @@
-Ansible Chromedriver Role 
+Ansible Chromedriver Role
 =========================
 
 This is a reusable ansible role which installs a recent version
 of phantomjs into `/usr/local/bin/phantomjs_VERSION/` and
 points `/usr/local/bin/phantomjs` to that.
 
-### Version 
+### Version
 
 This installs currently the old version 1.9.2 of phantomjs which is hosted via
 google. The Bitbucket CDN wouldn't let me fetch current versions (_Rate limit
-exceeded_). 
+exceeded_).
 
 Supported Ansible Versions
 --------------------------
